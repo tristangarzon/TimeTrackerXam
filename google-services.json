@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "870093507073",
+    "project_id": "timetrackerapp-a683d",
+    "storage_bucket": "timetrackerapp-a683d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870093507073:android:240539752d7953e05cce00",
+        "android_client_info": {
+          "package_name": "com.tristan.timetrackerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "870093507073-g4hve8ht4ma0d3ogtii1t3p8haapaq83.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx-oSBlsujA9D2R_L5WMFgvek0vCCfRn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "870093507073-g4hve8ht4ma0d3ogtii1t3p8haapaq83.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

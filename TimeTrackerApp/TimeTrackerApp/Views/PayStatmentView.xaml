@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:TimeTrackerApp.Views"
+             x:Class="TimeTrackerApp.Views.PayStatmentView">
+  <ContentView.Content>
+        <Frame Padding="0" CornerRadius="3" BackgroundColor="White"
+               HasShadow="True">
+            <StackLayout Orientation="Horizontal">
+                <views:StatementEarningsView WidthRequest="120"
+                                             Earnings="{Binding Earnings}"/>
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <views:HoursProgessView Current="{Binding TotalHours}"
+                                           HeightRequest="20" BarColor="LightGray"
+                                            FillColor="{StaticResource PrimaryHeaderColor}"/>
+                    <Label Text="{Binding PayRange}"
+                           HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
