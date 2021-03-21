@@ -32,10 +32,7 @@ namespace TimeTrackerApp.ViewModels
         }
 
         private ICommand _tapCommand;
-        private string v;
-        private Action goToPhoneLogin;
-
-        public ICommand TapCommad
+        public ICommand TapCommand
         {
             get => _tapCommand;
             set => SetProperty(ref _tapCommand, value);
@@ -46,15 +43,10 @@ namespace TimeTrackerApp.ViewModels
         public LoginOptionViewModel(string text, Action tapAction, Color bgColor, string icon = "")
         {
             Text = text;
-            TapCommad = new Command(tapAction);
+            TapCommand = new Command(tapAction);
             BackgroundColor = bgColor;
             Icon = icon;
         }
 
-        public LoginOptionViewModel(string v, Action goToPhoneLogin)
-        {
-            this.v = v;
-            this.goToPhoneLogin = goToPhoneLogin;
-        }
     }
 }

@@ -4,7 +4,14 @@
              x:Class="TimeTrackerApp.Pages.LoginPhonePage">
   <ContentPage.Content>
       <StackLayout>
-          
-      </StackLayout>
+            <StackLayout>
+                <Label Text="Login Phone Page" HorizontalOptions="CenterAndExpand" />
+                <Entry Placeholder="Phone Number Ex: 123-456-7890" Text="{Binding PhoneNumber}"/>
+                <Entry Placeholder="SMS Code" Text="{Binding Code}" 
+                       IsVisible="{Binding CodeSent}"/>
+                <Button Text="{Binding ButtonText}" Command="{Binding NextCommand}" />
+            </StackLayout>
+
+        </StackLayout>
   </ContentPage.Content>
 </ContentPage>

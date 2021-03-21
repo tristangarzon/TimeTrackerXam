@@ -59,7 +59,7 @@ namespace TimeTrackerApp.PageModels
 
         private void GoToPhoneLogin()
         {
-            throw new NotImplementedException();
+            _navigationService.NavigateToAsync<LoginPhonePageModel>();
         }
     }
 }

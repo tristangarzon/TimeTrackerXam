@@ -9,7 +9,6 @@ using Xamarin.Forms.Xaml;
 
 namespace TimeTrackerApp.Pages
 {
-  //  [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginEmailPage : ContentPage
     {
         public LoginEmailPage()
