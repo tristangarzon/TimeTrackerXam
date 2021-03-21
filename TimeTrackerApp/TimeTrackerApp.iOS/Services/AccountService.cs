@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using Foundation;
 using System;
 using System.Threading.Tasks;
 using TimeTrackerApp.iOS.Services;
@@ -10,6 +11,9 @@ namespace TimeTrackerApp.iOS.Services
 {
     public class AccountService : IAccountService
     {
+        private TaskCompletionSource<bool> _phoneAuthTcs;
+        private string _verifactionID;
+
         public AccountService()
         {
         }
@@ -30,8 +34,44 @@ namespace TimeTrackerApp.iOS.Services
 
            
         }
-        
-        
+
+        public Task<bool> SendOtpCodeAsync(string phoneNumber)
+        {
+            _phoneAuthTcs = new TaskCompletionSource<bool>();
+
+            PhoneAuthProvider.DefaultInstance.VerifyPhoneNumber(
+                phoneNumber,
+                null,
+                new VerificationResultHandler(OnVerificationResult));
+
+
+            return _phoneAuthTcs.Task;
+        }
+
+        private void OnVerificationResult(string verificationId, NSError error)
+        {
+            if(error != null)
+            {
+                // something went wrong
+                _phoneAuthTcs?.TrySetResult(false);
+                return;
+            }
+            _verifactionID = verificationId;
+            _phoneAuthTcs?.TrySetResult(true);
+        }
+
+        public Task<bool> VerifyOtpCodeAsync(string code)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+
+            var credential = PhoneAuthProvider.DefaultInstance.GetCredential(
+                _verifactionID, code);
+            Auth.DefaultInstance.SignInWithCredentialAsync(credential)
+                .ContinueWith((task) => OnAuthCompleted(task, tcs));
+
+            return tcs.Task;               
+        }
+
         private void OnAuthCompleted(Task task, TaskCompletionSource<bool> tcs)
         {
             if (task.IsCanceled || task.IsFaulted)

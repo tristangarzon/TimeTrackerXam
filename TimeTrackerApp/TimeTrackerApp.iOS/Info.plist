@@ -34,5 +34,18 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tristan.TimeTrackerApp</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>URL Type 1</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.870093507073-grsj7499rrbg35k9tqe0k02vmkcn7efs</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
+	</array>
 </dict>
 </plist>

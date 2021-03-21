@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Input;
 using TimeTrackerApp.PageModels.Base;
 using TimeTrackerApp.Services.Account;
+using TimeTrackerApp.Services.Navigation;
 using Xamarin.Forms;
 
 namespace TimeTrackerApp.PageModels
@@ -46,27 +47,44 @@ namespace TimeTrackerApp.PageModels
 
 
         private IAccountService _accountService;
+        private INavigationService _navigationService;
         private bool _codeRequested;
 
-        public LoginPhonePageModel(IAccountService accountService)
+        public LoginPhonePageModel(IAccountService accountService,
+            INavigationService navigationService)
         {
             _accountService = accountService;
+            _navigationService = navigationService;
 
             NextCommand = new Command(OnNextAction);
         }
 
-        private void OnNextAction(object obj)
+        private async void OnNextAction(object obj)
         {
             if(_codeRequested)
             {
                 // Verify code that user entered
+                var loginAttempt = await _accountService.VerifyOtpCodeAsync(Code);
+                if (loginAttempt)
+                {
+                    await _navigationService.NavigateToAsync<DashboardPageModel>(null, true);
+                }
+                else
+                {
+                    //Something went wrong
+                    // TODO: Alert via dialog service
+                }
             }
             else
             {
+                CodeSent = await _accountService.SendOtpCodeAsync(PhoneNumber);
+
+                if (!CodeSent)
+                    return;
+
                 _codeRequested = true;
                 ButtonText = "Verify Code";
-                CodeSent = true;
-                _accountService.SendOtpCodeAsync(PhoneNumber);
+
             }
         }
     }
