@@ -29,6 +29,13 @@
             {
               "client_id": "870093507073-g4hve8ht4ma0d3ogtii1t3p8haapaq83.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "870093507073-grsj7499rrbg35k9tqe0k02vmkcn7efs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tristan.TimeTrackerApp"
+              }
             }
           ]
         }

@@ -24,6 +24,8 @@ namespace TimeTrackerApp.PageModels.Base
             //Register Pages and Page Models
             Register<DashboardPageModel, DashboardPage>();
             Register<LoginPageModel, LoginPage>();
+            Register<LoginEmailPageModel, LoginEmailPage>();
+            Register<LoginPhonePageModel, LoginPhonePage>();
             Register<ProfilePageModel, ProfilePage>();
             Register<SettingsPageModel, SettingsPage>();
             Register<SummaryPageModel, SummaryPage>();

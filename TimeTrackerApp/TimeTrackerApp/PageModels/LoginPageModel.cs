@@ -6,60 +6,60 @@ using TimeTrackerApp.PageModels;
 using TimeTrackerApp.PageModels.Base;
 using TimeTrackerApp.Services.Account;
 using TimeTrackerApp.Services.Navigation;
+using TimeTrackerApp.ViewModels;
 using Xamarin.Forms;
 
 namespace TimeTrackerApp.PageModels
 {
     public class LoginPageModel : PageModelBase
     {
-        private ICommand _loginCommand;
-
-        public ICommand LoginCommand
+        private string _icon;
+        public string Icon
         {
-            get => _loginCommand;
-            set => SetProperty(ref _loginCommand, value);
+            get => _icon;
+            set => SetProperty(ref _icon, value);
         }
 
-        private string _username;
-        public string Username
+        private LoginOptionViewModel _loginEmailViewModel;
+        public LoginOptionViewModel LoginEmailViewModel
         {
-            get => _username;
-            set => SetProperty(ref _username, value);
+            get => _loginEmailViewModel;
+            set => SetProperty(ref _loginEmailViewModel, value);
         }
 
-        private string _password;
-        public string Password
+        private LoginOptionViewModel _loginPhoneViewModel;
+        public LoginOptionViewModel LoginPhoneViewModel
         {
-            get => _password;
-            set => SetProperty(ref _password, value);
+            get => _loginPhoneViewModel;
+            set => SetProperty(ref _loginPhoneViewModel, value);
         }
-
 
         private INavigationService _navigationService;
-        private IAccountService _accountService;
 
-        public LoginPageModel(INavigationService navigationService, IAccountService accountService)
+        public LoginPageModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            _accountService = accountService;
 
-            //Init our Signin Command
-            LoginCommand = new Command(OnSignInAction);
+            LoginPhoneViewModel = new LoginOptionViewModel(
+                "Sign in with phone", GoToPhoneLogin,
+                Color.FromHex("#02bd7e") //Green Color
+                ); 
+
+            LoginEmailViewModel = new LoginOptionViewModel(
+                "Sign in with email",
+                GoToEmailLogin,
+                Color.FromHex("#db4437") //Red Color
+                );
         }
 
-        private async void OnSignInAction()
+        private void GoToEmailLogin()
         {
-            var logininAttemp = await _accountService.LoginAsync(Username, Password);
+            _navigationService.NavigateToAsync<LoginEmailPageModel>();
+        }
 
-            if (logininAttemp)
-            {
-                //Navigate to the Dashboard
-                await _navigationService.NavigateToAsync<DashboardPageModel>();
-            }else
-            {
-                //To Do:  Displat an Alert for Failure
-            }
-
+        private void GoToPhoneLogin()
+        {
+            throw new NotImplementedException();
         }
     }
 }
