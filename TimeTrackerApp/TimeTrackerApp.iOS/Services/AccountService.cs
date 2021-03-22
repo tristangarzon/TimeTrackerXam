@@ -3,6 +3,7 @@ using Foundation;
 using System;
 using System.Threading.Tasks;
 using TimeTrackerApp.iOS.Services;
+using TimeTrackerApp.Models;
 using TimeTrackerApp.Services.Account;
 using Xamarin.Forms;
 
@@ -83,6 +84,10 @@ namespace TimeTrackerApp.iOS.Services
             // User is logged in
             tcs.SetResult(true);
         }
-        
+
+        public Task<AuthenticatedUser> GetUserAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

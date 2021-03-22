@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using TimeTrackerApp.Models;
 
 namespace TimeTrackerApp.Services.Account
 {
@@ -11,5 +12,7 @@ namespace TimeTrackerApp.Services.Account
         Task<double> GetCurrentPayRateAsync();
         Task<bool> SendOtpCodeAsync(string phoneNumber);
         Task<bool> VerifyOtpCodeAsync(string code);
+
+        Task<AuthenticatedUser> GetUserAsync();
     }
 }

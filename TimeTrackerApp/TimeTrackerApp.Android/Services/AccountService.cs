@@ -1,9 +1,12 @@
 ﻿using Firebase;
 using Firebase.Auth;
+using Firebase.Firestore;
 using Java.Util.Concurrent;
 using System;
 using System.Threading.Tasks;
+using TimeTrackerApp.Droid.ServiceListeners;
 using TimeTrackerApp.Droid.Services;
+using TimeTrackerApp.Models;
 using TimeTrackerApp.Services.Account;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -91,6 +94,19 @@ namespace TimeTrackerApp.Droid.Services
                 return tcs.Task;
             }
             return Task.FromResult(false);
+        }
+
+        public Task<AuthenticatedUser> GetUserAsync()
+        {
+            var tcs = new TaskCompletionSource<AuthenticatedUser>();
+
+            FirebaseFirestore.Instance
+                 .Collection("users")
+                 .Document(FirebaseAuth.Instance.CurrentUser.Uid)
+                 .Get()
+                 .AddOnCompleteListener(new OnCompleteListener(tcs));
+
+            return tcs.Task;
         }
     }
 }
