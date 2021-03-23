@@ -83,6 +83,11 @@ namespace TimeTrackerApp.PageModels
             RunningTotal = new TimeSpan();
             _hourlyRate = await _accountService.GetCurrentPayRateAsync();
             WorkItems = await _workService.GetTodaysWorkAsync();
+            var user = await _accountService.GetUserAsync();
+            if (user == null)
+            {
+
+            }
             await base.InitializeAsync(navigationDate);
         }
 

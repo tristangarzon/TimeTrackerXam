@@ -87,7 +87,28 @@ namespace TimeTrackerApp.iOS.Services
 
         public Task<AuthenticatedUser> GetUserAsync()
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<AuthenticatedUser>();
+
+            Firebase.CloudFirestore.Firestore.SharedInstance
+                .GetCollection("users")
+                .GetDocument(Auth.DefaultInstance.CurrentUser.Uid)
+                .GetDocument((snapshot, error) =>
+                {
+                    if (error != null)
+                    {
+                        // something went wrong
+                        tcs.TrySetResult(default(AuthenticatedUser));
+                    }
+                    tcs.TrySetResult(new AuthenticatedUser
+                    {
+                        Id = snapshot.Id,
+                        FirstName = snapshot.GetValue(new NSString("FirstName")).ToString(),
+                        LastName = snapshot.GetValue(new NSString("LastName")).ToString(),
+                    });
+
+                });
+
+            return tcs.Task;
         }
     }
 }
