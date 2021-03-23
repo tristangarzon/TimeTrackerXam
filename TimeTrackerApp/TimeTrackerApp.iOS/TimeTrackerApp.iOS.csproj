@@ -68,6 +68,8 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\HoursProgressViewRenderer.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\BaseRepository.cs" />
+    <Compile Include="Services\TestDataRepository.cs" />
     <None Include="Entitlements.plist" />
     <BundleResource Include="GoogleService-Info.plist" />
     <None Include="Info.plist" />
@@ -154,5 +156,8 @@
       <Project>{1372AC74-D710-446F-98DD-EA2F34DDF1BC}</Project>
       <Name>TimeTrackerApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>
