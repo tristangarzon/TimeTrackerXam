@@ -15,7 +15,7 @@ namespace TimeTrackerApp.iOS.Services
 
         public abstract string DocumentPath { get;  }
 
-        public virtual Task<bool> Delete()
+        public virtual Task<bool> Delete(T item)
         {
             throw new NotImplementedException();
         }
@@ -67,9 +67,24 @@ namespace TimeTrackerApp.iOS.Services
             return tcs.Task;
         }
 
-        public virtual Task<bool> Save()
+        public virtual Task<bool> Save(T item)
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<bool>();
+
+            Firebase.CloudFirestore.Firestore.SharedInstance
+                .GetCollection(DocumentPath)
+                .AddDocument(item.Convert(), new Firebase.CloudFirestore.AddDocumentCompletionHandler((error) =>
+                {
+                    if (error != null)
+                    {
+                        //Something went wrong
+                        tcs.TrySetResult(default);
+                        return;
+                    }
+                    tcs.TrySetResult(true);
+                }));
+
+            return tcs.Task;
         }
     }
 }
