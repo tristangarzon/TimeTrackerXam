@@ -163,5 +163,13 @@
       <Name>TimeTrackerApp</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\leftarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profileuser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\wallclock.png" />
+  </ItemGroup>
 </Project>

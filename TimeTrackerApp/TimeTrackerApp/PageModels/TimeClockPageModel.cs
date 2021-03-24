@@ -85,9 +85,11 @@ namespace TimeTrackerApp.PageModels
             RunningTotal = new TimeSpan();
             _hourlyRate = await _accountService.GetCurrentPayRateAsync();
             WorkItems = await _workService.GetTodaysWorkAsync();
+
+
             //var items = await PageModelLocator.Resolve<IRepository<TestData>>().GetAll();
                 //.Get("uNzLaHvLHKR0bMyMRPxW");       
-            var result = await PageModelLocator.Resolve<IRepository<TestData>>()
+           // var result = await PageModelLocator.Resolve<IRepository<TestData>>()
             //.Save(new TestData
             //{
             //    Age = 30,
@@ -102,11 +104,13 @@ namespace TimeTrackerApp.PageModels
 
             //}
 
-            .Delete(new TestData { Id = "uNzLaHvLHKR0bMyMRPxW" });
-            if (result)
-            {
+            //.Delete(new TestData { Id = "uNzLaHvLHKR0bMyMRPxW" });
+            //if (result)
+            //{
 
-            }
+            //}
+
+
 
 
             await base.InitializeAsync(navigationDate);
