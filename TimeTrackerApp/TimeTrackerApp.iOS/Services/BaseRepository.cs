@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeTrackerApp.iOS.Extensions;
 using TimeTrackerApp.Services;
 using UIKit;
 
@@ -35,13 +36,35 @@ namespace TimeTrackerApp.iOS.Services
                         tcs.TrySetResult(default);
                         return;
                     }
+                    tcs.TrySetResult(snapshot.Convert<T>());
                 });
             return tcs.Task;
         }
 
         public virtual Task<IList<T>> GetAll()
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<IList<T>>();
+            var list = new List<T>();
+            Firebase.CloudFirestore.Firestore.SharedInstance
+                .GetCollection(DocumentPath)
+                .GetDocuments((snapshot, error) =>
+                {
+                    if (error != null)
+                    {
+                        //Something went wrong
+                        tcs.TrySetResult(default);
+                        return;
+                    }
+                    var docs = snapshot.Documents;
+                    foreach(var doc in docs)
+                    {
+                        var item = doc.Convert<T>();
+                        list.Add(item);
+                        tcs.TrySetResult(list);
+                    }
+                });
+
+            return tcs.Task;
         }
 
         public virtual Task<bool> Save()

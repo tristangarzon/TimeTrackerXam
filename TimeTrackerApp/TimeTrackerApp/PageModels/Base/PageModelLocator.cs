@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TimeTrackerApp.Models;
 using TimeTrackerApp.Pages;
+using TimeTrackerApp.Services;
 using TimeTrackerApp.Services.Account;
 using TimeTrackerApp.Services.Navigation;
 using TimeTrackerApp.Services.Statements;
@@ -37,6 +39,8 @@ namespace TimeTrackerApp.PageModels.Base
             _container.Register<IAccountService>(DependencyService.Get<IAccountService>());
             _container.Register<IStatementService, MockStatementService>();
             _container.Register<IWorkService, MockWorkService>();
+            //_container.Register(DependencyService.Get<IRepository<WorkItem>>());
+            _container.Register(DependencyService.Get<IRepository<TestData>>()); // Regis Test Data, wont need in the future
         }
 
         public static Page CreatePageFor(Type pageModelType)
