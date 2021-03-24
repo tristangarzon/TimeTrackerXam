@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeTrackerApp.Droid.Extensions;
 using TimeTrackerApp.Droid.ServiceListeners;
 using TimeTrackerApp.Services;
 
@@ -27,7 +28,15 @@ namespace TimeTrackerApp.Droid.Services
 
         public Task<bool> Delete(T item)
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<bool>();
+
+            FirebaseFirestore.Instance
+                .Collection(DocumentPath)
+                .Document(item.Id)
+                .Delete()
+                .AddOnCompleteListener(new OnDeleteCompleteListener(tcs));
+
+            return tcs.Task;
         }
 
         public Task<T> Get(string id)
@@ -45,12 +54,28 @@ namespace TimeTrackerApp.Droid.Services
 
         public Task<IList<T>> GetAll()
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<IList<T>>();
+            var list = new List<T>();
+
+            FirebaseFirestore.Instance
+                .Collection(DocumentPath)
+                .Get()
+                .AddOnCompleteListener(new OnCollectionCompleteListener<T>(tcs));
+
+            return tcs.Task;
         }
 
-        public Task<bool> Save(T item)
+        public Task<string> Save(T item)
         {
-            throw new NotImplementedException();
+            var tcs = new TaskCompletionSource<string>();
+
+            FirebaseFirestore.Instance
+                .Collection(DocumentPath)
+                .Add(item.Convert())
+                .AddOnCompleteListener(new OnCreateCompleteListener(tcs));
+
+
+            return tcs.Task;
         }
     }
 }

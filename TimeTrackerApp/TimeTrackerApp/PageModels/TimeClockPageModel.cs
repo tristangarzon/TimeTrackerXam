@@ -85,19 +85,30 @@ namespace TimeTrackerApp.PageModels
             RunningTotal = new TimeSpan();
             _hourlyRate = await _accountService.GetCurrentPayRateAsync();
             WorkItems = await _workService.GetTodaysWorkAsync();
-            var result = await PageModelLocator.Resolve<IRepository<TestData>>().Save(new TestData
+            //var items = await PageModelLocator.Resolve<IRepository<TestData>>().GetAll();
+                //.Get("uNzLaHvLHKR0bMyMRPxW");       
+            var result = await PageModelLocator.Resolve<IRepository<TestData>>()
+            //.Save(new TestData
+            //{
+            //    Age = 30,
+            //    Amount = 100.0,
+            //    Flag = false,
+            //    Name = "Some Name",
+            //    SomeDate = DateTime.Now
+            //});
 
-            {
-                Age = 30,
-                Amount = 100.0,
-                Flag = false,
-                Name = "Some Name",
-                SomeDate = DateTime.Now
-            }) ;
-            if(result)
+            //if (result != null)
+            //{
+
+            //}
+
+            .Delete(new TestData { Id = "uNzLaHvLHKR0bMyMRPxW" });
+            if (result)
             {
 
             }
+
+
             await base.InitializeAsync(navigationDate);
         }
 

@@ -14,7 +14,7 @@ namespace TimeTrackerApp.Services
     {
         Task<T> Get(string id);
         Task<IList<T>> GetAll();
-        Task<bool> Save(T item);
+        Task<string> Save(T item);
         Task<bool> Delete(T item);
     }
 }

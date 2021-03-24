@@ -75,14 +75,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\DocumentReferenceExtensions.cs" />
+    <Compile Include="Extensions\IIdentifiableExtensions.cs" />
+    <Compile Include="Extensions\JavaLangExtensions.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\HoursProgressViewRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceListeners\OnCollectionCompleteListener.cs" />
     <Compile Include="ServiceListeners\OnCompleteListener.cs" />
+    <Compile Include="ServiceListeners\OnCreateCompleteListener.cs" />
+    <Compile Include="ServiceListeners\OnDeleteCompleteListener.cs" />
     <Compile Include="ServiceListeners\OnDocumentCompleteListener.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\BaseRepository.cs" />
+    <Compile Include="Services\TestDataRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json" />

@@ -19,7 +19,7 @@ namespace TimeTrackerApp.Droid.Extensions
         {
             try
             {
-                var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(doc.Data);
+                var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(doc.Data.ToDictionary());
                 var item = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(jsonStr);
                 item.Id = doc.Id;
                 return item;
@@ -28,6 +28,16 @@ namespace TimeTrackerApp.Droid.Extensions
                 System.Diagnostics.Debug.WriteLine("EXECPTION THROWN");
             }
             return default;
+        }
+        public static List <T> Convert<T>(this QuerySnapshot docs) where T : IIdentifiable
+        {
+            var list = new List<T>();
+            foreach(var doc in docs.Documents)
+            {
+                list.Add(doc.Convert<T>());
+            }
+
+            return list;
         }
 
     }
