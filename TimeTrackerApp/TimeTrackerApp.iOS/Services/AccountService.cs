@@ -98,6 +98,7 @@ namespace TimeTrackerApp.iOS.Services
                     {
                         // something went wrong
                         tcs.TrySetResult(default(AuthenticatedUser));
+                        return;
                     }
                     tcs.TrySetResult(new AuthenticatedUser
                     {
