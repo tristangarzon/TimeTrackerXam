@@ -69,6 +69,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\HoursProgressViewRenderer.cs" />
+    <Compile Include="Renderers\PlainEntryRenderer.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\BaseRepository.cs" />
     <Compile Include="Services\TestDataRepository.cs" />

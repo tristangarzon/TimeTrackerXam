@@ -79,6 +79,7 @@
     <Compile Include="Extensions\JavaLangExtensions.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\HoursProgressViewRenderer.cs" />
+    <Compile Include="Renderers\PlainEntryRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceListeners\OnCollectionCompleteListener.cs" />

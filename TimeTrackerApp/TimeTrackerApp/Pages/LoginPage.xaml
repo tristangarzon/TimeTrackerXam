@@ -15,14 +15,10 @@
             <StackLayout>
                 <!--App Icon-->
                 <Image WidthRequest="200" Aspect="AspectFit" 
-                   HorizontalOptions="Center" Margin="20" 
-                   Source="{Binding Icon}"/>
-                <!-- Login Options-->
-                <views:LoginOptionView BindingContext="{Binding LoginEmailViewModel}"/>
-                <views:LoginOptionView BindingContext="{Binding LoginPhoneViewModel}"/>
-
-
-
+                   HorizontalOptions="Center" Margin="20,80,20,20" Source="wallclock"/>
+                <views:LoginEntryView BindingContext="{Binding EmailEntryViewModel}"/>
+                <views:LoginEntryView BindingContext="{Binding PasswordEntryViewModel}"/>
+ 
             </StackLayout>
         </Grid>
     </ContentPage.Content>

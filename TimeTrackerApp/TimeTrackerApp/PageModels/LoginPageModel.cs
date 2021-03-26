@@ -20,41 +20,18 @@ namespace TimeTrackerApp.PageModels
             set => SetProperty(ref _icon, value);
         }
 
-        private LoginOptionViewModel _loginEmailViewModel;
-        public LoginOptionViewModel LoginEmailViewModel
-        {
-            get => _loginEmailViewModel;
-            set => SetProperty(ref _loginEmailViewModel, value);
-        }
-
-        private LoginOptionViewModel _loginPhoneViewModel;
-        public LoginOptionViewModel LoginPhoneViewModel
-        {
-            get => _loginPhoneViewModel;
-            set => SetProperty(ref _loginPhoneViewModel, value);
-        }
+        public LoginEntryViewModel EmailEntryViewModel { get; set; }
+        public LoginEntryViewModel PasswordEntryViewModel { get; set; }
 
         private INavigationService _navigationService;
 
         public LoginPageModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
+            EmailEntryViewModel = new LoginEntryViewModel("email", false);
 
-            LoginPhoneViewModel = new LoginOptionViewModel(
-                "Sign in with phone", GoToPhoneLogin,
-                Color.FromHex("#02bd7e") //Green Color
-                ); 
-
-            LoginEmailViewModel = new LoginOptionViewModel(
-                "Sign in with email",
-                GoToEmailLogin,
-                Color.FromHex("#db4437") //Red Color
-                );
-        }
-
-        private void GoToEmailLogin()
-        {
-            _navigationService.NavigateToAsync<LoginEmailPageModel>();
+            PasswordEntryViewModel = new LoginEntryViewModel("password", true);
+         
         }
 
         private void GoToPhoneLogin()
