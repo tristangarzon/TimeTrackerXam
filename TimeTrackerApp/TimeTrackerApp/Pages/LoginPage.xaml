@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:TimeTrackerApp.Views"
              NavigationPage.HasNavigationBar="False"
+             xmlns:buttons="clr-namespace:TimeTrackerApp.Views.Buttons"
              xmlns:skViews="clr-namespace:TimeTrackerApp.Views.SKViews"
              Title="Login"
              x:Class="TimeTrackerApp.Pages.LoginPage">
@@ -12,13 +13,22 @@
                                       EndColor="{StaticResource GradientEndColor}"
                                       VerticalOptions="FillAndExpand"/>
 
-            <StackLayout>
+            <StackLayout WidthRequest="220" HorizontalOptions="Center">
                 <!--App Icon-->
-                <Image WidthRequest="200" Aspect="AspectFit" 
-                   HorizontalOptions="Center" Margin="20,80,20,20" Source="wallclock"/>
+                <Image WidthRequest="200" Aspect="AspectFit" VerticalOptions="EndAndExpand"
+                   HorizontalOptions="Center" Margin="20, 0,20,40" Source="wallclock"/>
                 <views:LoginEntryView BindingContext="{Binding EmailEntryViewModel}"/>
                 <views:LoginEntryView BindingContext="{Binding PasswordEntryViewModel}"/>
- 
+                
+                <buttons:BindableButton BackgroundColor="Transparent"
+                                        TextColor="White" FontFamily="Nunito-Regular"
+                                        BindingContext="{Binding ForgotPasswordModel}"
+                                        HorizontalOptions="Center" WidthRequest="180"/>
+                <buttons:BindableButton BindingContext="{Binding LogInModel}" />
+                <buttons:BindableButton BindingContext="{Binding UsePhoneModel}"
+                                        BackgroundColor="Transparent"
+                                        TextColor="White"
+                                        VerticalOptions="StartAndExpand"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

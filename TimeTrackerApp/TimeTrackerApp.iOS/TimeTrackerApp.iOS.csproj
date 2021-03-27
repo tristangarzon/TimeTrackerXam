@@ -68,6 +68,7 @@
     <Compile Include="Extensions\IIdentifiableExtensions.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\ExtendedFrameRenderer.cs" />
     <Compile Include="Renderers\HoursProgressViewRenderer.cs" />
     <Compile Include="Renderers\PlainEntryRenderer.cs" />
     <Compile Include="Services\AccountService.cs" />

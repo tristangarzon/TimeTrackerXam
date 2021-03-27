@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skViews="clr-namespace:TimeTrackerApp.Views.SKViews"
+             xmlns:buttons="clr-namespace:TimeTrackerApp.Views.Buttons"
+             xmlns:layouts="clr-namespace:TimeTrackerApp.Views.Layouts"
+             NavigationPage.HasNavigationBar="False"    
+             x:Class="TimeTrackerApp.Pages.RecentActivityPage">
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="280,*" BackgroundColor="{StaticResource BackgroundColorLight}">
+            <skViews:RectGradientView StartColor="{StaticResource GradientStartColor}"
+                                      EndColor="{StaticResource GradientEndColor}"
+                                      VerticalOptions="FillAndExpand"/>
+            <StackLayout>
+                <!--Header Layout-->
+            </StackLayout>
+            
+            <StackLayout Grid.Row="1" Margin="20">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Recent Activity" VerticalOptions="Center"/>
+                    <buttons:BindableButton BackgroundColor="Transparent"
+                                            BindingContext="{Binding ViewAllModel}"
+                                            FontAttributes="None" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <layouts:ExtendedFrame BackgroundColor="White" CornerRadius="20" HasShadow="True" 
+                         Padding="10" VerticalOptions="FillAndExpand" ShadowOpacity="0.25"
+                                       ShadowOffset="0,3" ShadowRadius="3">
+                    <StackLayout>
+                        <!--Recent Activity List-->
+                    </StackLayout>
+                </layouts:ExtendedFrame>
+            </StackLayout>
+
+            <buttons:BindableButton BindingContext="{Binding ClockInModel}"
+                                    Grid.Row="1" Margin="0, -30, 0, 0"
+                                    VerticalOptions="Start"/>
+        </Grid>
+    </ContentPage.Content>
+    
+</ContentPage>
