@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skViews="clr-namespace:TimeTrackerApp.Views.SKViews"
+             x:Class="TimeTrackerApp.Views.ListItemView">
+  <ContentView.Content>
+        <StackLayout>
+            <Grid Margin="0,0,0,20" ColumnDefinitions="65,*,80" RowDefinitions="25,20,25" RowSpacing="0">
+                <skViews:CircleGradientView HeightRequest="60" Grid.RowSpan="3" VerticalOptions="Center"
+                                            StartColor="{StaticResource GradientStartColor}"
+                                            EndColor="{StaticResource GradientEndColor}"/>
+                <!-- Number of Hours -->
+                <StackLayout Grid.RowSpan="3" HeightRequest="65" VerticalOptions="Center" Spacing="0">
+                    <Label Text="{Binding TotalHours, StringFormat='{}{0:0.##}'}" TextColor="White"
+                           FontFamily="Nunito-ExtraBold" HorizontalOptions="Center" VerticalOptions="EndAndExpand" FontSize="20"/>
+                    <Label Text="hours" HorizontalOptions="Center" VerticalOptions="StartAndExpand" TextColor="White"
+                           FontFamily="Nunito-Light" FontSize="15" Margin="0, -8, 0, 0"/>
+                </StackLayout>
+
+                <Label Text="Binding Name" Grid.Column="1" Grid.Row="0" VerticalOptions="End" FontSize="15"
+                       FontFamily="Nunito-Bold"/>
+                <Label Text="{Binding StartEnd}" Grid.Column="1" Grid.Row="1" VerticalOptions="Center"
+                       TextColor="{StaticResource GradientEndColor}" FontFamily="Nunito-Bold" FontSize="15"/>
+                <Label Text="{Binding Date}" Grid.Column="1" Grid.Row="2" VerticalOptions="Start" TextColor="#B2B2B2"
+                       FontSize="10" FontFamily="Nunito-BoldItalic"/>
+            </Grid>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

@@ -26,9 +26,9 @@
                 <layouts:ExtendedFrame BackgroundColor="White" CornerRadius="20" HasShadow="True" 
                          Padding="10" VerticalOptions="FillAndExpand" ShadowOpacity="0.25"
                                        ShadowOffset="0,3" ShadowRadius="3">
-                    <StackLayout>
-                        <!--Recent Activity List-->
-                    </StackLayout>
+                    <CollectionView ItemsSource="{Binding Items}" SelectionMode="None">
+                        
+                    </CollectionView>
                 </layouts:ExtendedFrame>
             </StackLayout>
 
