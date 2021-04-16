@@ -2,6 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:skViews="clr-namespace:TimeTrackerApp.Views.SKViews"
+             xmlns:labels="clr-namespace:TimeTrackerApp.Views.Labels"
              x:Class="TimeTrackerApp.Views.ListItemView">
   <ContentView.Content>
         <StackLayout>
@@ -17,12 +18,14 @@
                            FontFamily="Nunito-Light" FontSize="15" Margin="0, -8, 0, 0"/>
                 </StackLayout>
 
-                <Label Text="Binding Name" Grid.Column="1" Grid.Row="0" VerticalOptions="End" FontSize="15"
-                       FontFamily="Nunito-Bold"/>
-                <Label Text="{Binding StartEnd}" Grid.Column="1" Grid.Row="1" VerticalOptions="Center"
-                       TextColor="{StaticResource GradientEndColor}" FontFamily="Nunito-Bold" FontSize="15"/>
+                <labels:BoldLabel Text="Binding Name" Grid.Column="1" Grid.Row="0" VerticalOptions="End"/>
+                <labels:BoldLabel Text="{Binding StartEnd}" Grid.Column="1" Grid.Row="1" VerticalOptions="Center"
+                       TextColor="{StaticResource GradientEndColor}"/>
                 <Label Text="{Binding Date}" Grid.Column="1" Grid.Row="2" VerticalOptions="Start" TextColor="#B2B2B2"
                        FontSize="10" FontFamily="Nunito-BoldItalic"/>
+
+                <labels:BoldLabel Text="{Binding Earnings}" Grid.Column="2" Grid.Row="1" HorizontalOptions="End"
+                       TextColor="{StaticResource GradientStartColor}"/>
             </Grid>
         </StackLayout>
   </ContentView.Content>

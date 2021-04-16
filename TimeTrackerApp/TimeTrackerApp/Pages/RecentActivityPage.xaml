@@ -5,6 +5,7 @@
              xmlns:buttons="clr-namespace:TimeTrackerApp.Views.Buttons"
              xmlns:layouts="clr-namespace:TimeTrackerApp.Views.Layouts"
              NavigationPage.HasNavigationBar="False"    
+             xmlns:views="clr-namespace:TimeTrackerApp.Views"
              x:Class="TimeTrackerApp.Pages.RecentActivityPage">
     <ContentPage.Content>
 
@@ -27,7 +28,11 @@
                          Padding="10" VerticalOptions="FillAndExpand" ShadowOpacity="0.25"
                                        ShadowOffset="0,3" ShadowRadius="3">
                     <CollectionView ItemsSource="{Binding Items}" SelectionMode="None">
-                        
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <views:ListItemView />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
                     </CollectionView>
                 </layouts:ExtendedFrame>
             </StackLayout>

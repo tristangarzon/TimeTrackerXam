@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Label xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" FontSize="22"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        HorizontalOptions="Center" TextColor="SlateGray" FontAttributes="Bold"
-             x:Class="TimeTrackerApp.Views.Labels.TitleLabel" />
+             x:Class="TimeTrackerApp.Views.Labels.TitleLabel"
+       FontSize="15"
+       FontFamily="Nunito-Bold"/>

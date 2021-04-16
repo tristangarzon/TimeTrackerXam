@@ -20,11 +20,25 @@ namespace TimeTrackerApp.ViewModels
         private double _totalHours;
         public double TotalHours { get => _totalHours; set => SetProperty(ref _totalHours, value); }
 
+        private string _earnings;
+        public string Earnings { get => _earnings; set => SetProperty(ref _earnings, value); }
+
         public ListItemViewModel(WorkItem model)
         {
-            Name = model.JobName;
             StartEnd = $"{model.Start:h:mm:tt} - {model.End:h:mm tt}";
             Date = model.Start.ToString("MMMM d, yyyy");
+            TotalHours = model.Total.TotalHours;
+
+            if(model.Job != null)
+            {
+                Name = model.Job.Name;
+                Earnings = $"+{(model.Job.Rate * TotalHours):C}";
+            }
+            else
+            {
+                Name = "(undefined)";
+                Earnings = "(undefined)";
+            }
         }
     }
 }

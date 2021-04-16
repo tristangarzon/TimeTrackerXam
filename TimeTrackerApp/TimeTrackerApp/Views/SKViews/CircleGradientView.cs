@@ -12,7 +12,7 @@ namespace TimeTrackerApp.Views.SKViews
 
         protected override void DrawGradient(SKImageInfo info, SKCanvas canvas, SKPaint paint)
         {
-            var radius = Math.Min(info.Width, info.Height);
+            var radius = Math.Min(info.Width, info.Height) / 2;
             canvas.DrawCircle(info.Width / 2, info.Height / 2, radius, paint);
         }
     }
